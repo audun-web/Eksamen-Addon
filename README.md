@@ -23,3 +23,33 @@ Addonen kan vise loot i et eget vindu med søk, filter, statistikk og minimap-kn
 
 - `/lootlogger` åpner/lukker hovedvinduet
 - `/llclear` tømmer loot-databasen
+
+## Installasjon
+
+1. Last ned eller kopier mappen `LootLoggerClassic`
+2. Legg mappen i:
+   `World of Warcraft\_classic_era_\Interface\AddOns\`
+3. Start spillet og sjekk at addonen er aktiv i AddOns-listen
+4. Skriv `/lootlogger` i chat for å åpne UI
+
+## Data som lagres
+
+Data lagres i `LootLoggerClassicDB`.
+
+Hver entry inneholder:
+
+- item link
+- quantity
+- time
+- date
+- zone
+
+## Plan videre
+
+Nåværende TODO-liste er ferdig.
+
+Mulige neste steg:
+
+- Interface options panel i spillmenyen
+- Bedre eksport eller sortering av historikk
+- Små UI-forbedringer og tema-valg
