@@ -33,3 +33,13 @@ function GetTotalItemsLooted()
 
     return total
 end
+
+-- funksjon som lagrer items plukket opp denne økten, resetter ved game-load
+function GetSessionItemsLooted()
+
+    return LootLoggerSessionItems or 0 
+
+end
+
+-- gjør AddLootEntry tigjengelig til andre filer i WoW workspace
+LootLoggerClassic_AddLootEntry = AddLootEntry
