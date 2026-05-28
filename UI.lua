@@ -6,6 +6,7 @@ local currentFilter = "ALL"
 
 local itemSearchQuery = "" -- tekst i søkefeltet (matcher mot itemnavn)
 local ITEM_SEARCH_PLACEHOLDER = "Search item..." -- vises når søket er tomt
+local selectedLootIndex = nil -- database-indeks for valgt rad
 
 
 function PassesFilter(itemQuality) -- funksjon som sjekker rarity
@@ -315,6 +316,22 @@ clearHistoryButton:SetScript("OnClick", function()
         UpdateLootList()
     end
 end)
+
+
+local deleteButton = CreateFrame("Button", nil, LootLoggerFrame, "UIPanelButtonTemplate")
+deleteButton:SetSize(90, 22)
+deleteButton:SetPoint("LEFT", dropdown, "RIGHT", 10, 2)
+deleteButton:SetText("Delete row")
+deleteButton:SetScript("OnClick", function()
+    if not selectedLootIndex then
+        print("Select a row to delete.")
+        return
+    end
+    table.remove(LootLoggerClassicDB.loot, selectedLootIndex)
+    selectedLootIndex = nil
+    UpdateLootList()
+end)
+
 
 
 function UpdateLootList()
