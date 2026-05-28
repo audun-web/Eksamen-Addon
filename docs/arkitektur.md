@@ -29,3 +29,11 @@ Løsningen kjører lokalt i WoW-klienten (virtuell tjeneste i form av addon-modu
 - 2FA pa alle driftskontoer (CurseForge, Git og e-post) som kan publisere eller endre prosjektet.
 - Gjestetilgang i CurseForge gjelder lesing/nedlasting og gir ikke administrative rettigheter.
 - Plan for feilretting og rollback ved feil i ny versjon.
+
+
+
+#### kompetansemål
+
+beskrive komponenter i en driftsarkitektur
+planlegge og dokumentere arbeidsprosesser og IT-løsninger
+administrere/planlegge tilganger og rettigheter
