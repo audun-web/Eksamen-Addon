@@ -1,0 +1,2 @@
+LootLoggerClassicDB = LootLoggerClassicDB or {}
+LootLoggerClassicDB.loot = LootLoggerClassicDB.loot or {}
