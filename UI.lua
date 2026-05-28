@@ -312,6 +312,7 @@ clearHistoryButton:SetScript("OnClick", function()
     -- lar bruker tømme historikk fra UI uten slash-kommando
     if LootLoggerClassicDB and LootLoggerClassicDB.loot then
         LootLoggerClassicDB.loot = {}
+        selectedLootIndex = nil
         print("Loot history cleared from UI button.")
         UpdateLootList()
     end
@@ -335,6 +336,12 @@ end)
 
 
 function UpdateLootList()
+
+    if selectedLootIndex and not LootLoggerClassicDB.loot[selectedLootIndex] then
+        selectedLootIndex = nil
+    end
+
+
      -- skjuler gamle rader før nye bygges
     for _, child in ipairs({content:GetChildren()}) do
         child:Hide()
@@ -424,6 +431,7 @@ function UpdateLootList()
             row:SetScript("OnLeave", function()
                 GameTooltip:Hide()
             end)
+
 
             yOffset = yOffset - 28 -- flytter neste rad nedover
         end
