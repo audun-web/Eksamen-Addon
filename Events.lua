@@ -29,9 +29,10 @@ eventFrame:SetScript("OnEvent", function(self, event, message) -- hovedlogikk fo
     print("Loot detected:", itemLink, "x"..quantity)
 
     -- Legg inn i database
+    LootLoggerClassic_AddLootEntry(itemLink, quantity)
     
 
-    -- Oppdater UI-tall mens vinduet er åpent
+    -- Oppdater UI mens vinduet er åpent
     if LootLoggerMainFrame and LootLoggerMainFrame:IsShown() and UpdateLootList then
         UpdateLootList()
     end
