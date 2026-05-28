@@ -301,3 +301,42 @@ UIDropDownMenu_Initialize(dropdown, function(self, level) -- fyller dropdown med
     CreateOption("Epic", "EPIC")
 
 end)
+
+-- clear history knapp element
+local clearHistoryButton = CreateFrame("Button", nil, LootLoggerFrame, "UIPanelButtonTemplate")
+clearHistoryButton:SetSize(100, 22)
+clearHistoryButton:SetPoint("TOPRIGHT", LootLoggerFrame, "TOPRIGHT", -40, -50)
+clearHistoryButton:SetText("Clear History")
+clearHistoryButton:SetScript("OnClick", function()
+    -- lar bruker tømme historikk fra UI uten slash-kommando
+    if LootLoggerClassicDB and LootLoggerClassicDB.loot then
+        LootLoggerClassicDB.loot = {}
+        print("Loot history cleared from UI button.")
+        UpdateLootList()
+    end
+end)
+
+
+function UpdateLootList()
+     -- skjuler gamle rader før nye bygges
+    for _, child in ipairs({content:GetChildren()}) do
+        child:Hide()
+    end
+
+    local yOffset = -10 -- startposisjon for første rad
+
+
+    for i = #LootLoggerClassicDB.loot, 1, -1 do 
+        local entry = LootLoggerClassicDB.loot[i]
+
+        local itemName = string.match(entry.item, "%[(.-)%]") or "" -- henter itemnavn uten [] fra loggstrengen
+        local itemLink = select(2, GetItemInfo(itemName)) -- prøver å hente item link
+        local texture = select(10, GetItemInfo(itemName)) -- prøver å hente item ikon
+
+        local itemQuality = itemLink and select(3, GetItemInfo(itemLink)) or 1 -- fallback til common hvis info mangler
+
+        if PassesFilter(itemQuality) and PassesSearch(itemName) then
+            
+        end
+    end
+end
