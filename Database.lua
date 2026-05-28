@@ -21,3 +21,15 @@ local function AddLootEntry(itemLink, quantity)
 end
 
 
+-- funksjon som hjelper med å telle antall items spiller har plukket opp
+
+function GetTotalItemsLooted()
+    local total = 0
+
+    -- summerer quantity for alle entries i databasen
+    for i, entry in ipairs(LootLoggerClassicDB.loot) do
+        total = total + (entry.quantity or 1) -- legger til en eller total menge items lootet in i total
+    end
+
+    return total
+end
